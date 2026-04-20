@@ -1,1 +1,420 @@
-mine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salman | Motion Graphics & Video Editing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070709;
+            --bg-card: #121217;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --accent-1: #3b82f6;
+            --accent-2: #8b5cf6;
+            --glow: rgba(99, 102, 241, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography & Utilities */
+        h1, h2, h3 { line-height: 1.2; font-weight: 800; }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            color: #fff;
+            box-shadow: 0 4px 20px var(--glow);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--glow);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid #333;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-1);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Navbar */
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .video-container {
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #1a1a1a;
+            border-radius: 16px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Workflow Section */
+        .workflow {
+            padding: 8rem 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid #222;
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .step-number {
+            font-size: 0.875rem;
+            color: var(--accent-1);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 4rem 0 8rem;
+        }
+        .portfolio-category {
+            margin-bottom: 6rem;
+        }
+        .portfolio-category h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-1);
+            padding-left: 1rem;
+        }
+        .portfolio-category > p {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #222;
+        }
+        .project-info {
+            padding: 2rem;
+        }
+        .project-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-cta { flex-direction: column; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">salmansr<span class="gradient-text">.me</span></div>
+        </nav>
+
+        <section class="hero fade-in">
+            <h1>Turn your ideas into <span class="gradient-text">scroll-stopping videos</span> that drive action.</h1>
+            <p>You bring the vision; I build the retention. I craft fast-paced, visually dynamic edits designed to hack the algorithm, hook your audience in the first 3 seconds, and convert casual viewers into loyal followers and paying customers. Stop losing watch time to bad pacing—let’s make your content undeniable.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Book a Discovery Call</a>
+                <a href="#portfolio" class="btn btn-outline">See My Work</a>
+            </div>
+            
+            <div class="video-container">
+                <div>▶ Watch the Showreel: See the Magic in Action</div>
+            </div>
+        </section>
+
+        <section class="workflow" id="workflow">
+            <div class="section-header fade-in">
+                <h2>How We Win: <span class="gradient-text">The Proven Growth Workflow</span></h2>
+                <p>Great editing isn't just cutting clips together; it's a psychology. Here is how I partner with creators and brands to guarantee your content performs.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card fade-in">
+                    <span class="step-number">Step 1</span>
+                    <h3>The Strategy Sync</h3>
+                    <p><strong>The Goal:</strong> Understand your brand voice, target audience, and the core metric for the video (e.g., lead generation, viral growth, brand awareness).</p>
+                    <br>
+                    <p><strong>How it works:</strong> You send over your raw footage and brief. We establish the winning hook, the visual style, and the pacing required for your specific platform.</p>
+                </div>
+
+                <div class="card fade-in">
+                    <span class="step-number">Step 2</span>
+                    <h3>The Retention Engine</h3>
+                    <p><strong>The Goal:</strong> Keep eyes glued to the screen.</p>
+                    <br>
+                    <p><strong>How it works:</strong> I strip away the dead air and build the momentum. This step includes aggressive A-cut pacing, dynamic B-roll integration, custom motion graphics, and professional color grading to make your footage pop.</p>
+                </div>
+
+                <div class="card fade-in">
+                    <span class="step-number">Step 3</span>
+                    <h3>Immersive Sound Design</h3>
+                    <p><strong>The Goal:</strong> Make them feel the video.</p>
+                    <br>
+                    <p><strong>How it works:</strong> Visuals hook the brain, but audio keeps the heart. I layer cinematic sound effects, risers, whooshes, and perfectly timed music beds to subconsciously guide the viewer's emotion and attention.</p>
+                </div>
+
+                <div class="card fade-in">
+                    <span class="step-number">Step 4</span>
+                    <h3>Review, Refine & Dominate</h3>
+                    <p><strong>The Goal:</strong> 100% satisfaction and readiness for upload.</p>
+                    <br>
+                    <p><strong>How it works:</strong> You receive the first draft via a seamless review link. We do a round of precise revisions. Once approved, I deliver the final, fully optimized files ready to break the algorithm.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio" id="portfolio">
+            <div class="section-header fade-in">
+                <h2>Proof in the <span class="gradient-text">Pacing</span></h2>
+                <p>Browse my latest projects. Every cut, zoom, and graphic is engineered for maximum impact.</p>
+            </div>
+
+            <div class="portfolio-category fade-in">
+                <h3>1. Short-Form Editing (The Growth Engine)</h3>
+                <p>Short-form isn't just a trend; it's the top of your sales funnel. Here is how I build edits that trap attention on TikTok, Instagram Reels, and YouTube Shorts.</p>
+                
+                <div class="grid">
+                    <div class="project-card">
+                        <div class="project-video">[🔗 Viral Talking Head Example]</div>
+                        <div class="project-info">
+                            <h4>Style A: The Viral Talking Head</h4>
+                            <p><strong>Why it works:</strong> The "Devin Jatho" style dominates Instagram because it feels high-effort but native. It uses constant visual resets to prevent the viewer's brain from scrolling past.</p>
+                            <p><strong>The Breakdown:</strong> Aggressively cutting dead space, high-contrast animated typography, strategic punch-ins/zooms every 2-3s, and subtle sound effects on every visual change.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-video">[🔗 Minimalistic Animation Example]</div>
+                        <div class="project-info">
+                            <h4>Style B: Minimalistic Viral Animation</h4>
+                            <p><strong>Why it works:</strong> Perfect for educational content. By using clean, flat vector graphics and smooth easing, the cognitive load stays low while retention stays incredibly high. Makes you look like an authority.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-category fade-in">
+                <h3>2. Long-Form Editing (The Trust Builder)</h3>
+                <p>If short-form gets them in the door, long-form gets them to stay. This is where we build deep parasocial relationships and close high-ticket sales.</p>
+                
+                <div class="grid">
+                    <div class="project-card">
+                        <div class="project-video">[🔗 SaaS Animation Example]</div>
+                        <div class="project-info">
+                            <h4>Style A: SaaS Animation & UI Walkthroughs</h4>
+                            <p><strong>Why it works:</strong> Screen recordings are boring. I rebuild your interface into sleek 2D/3D motion graphics, highlighting core features with smooth pans and glowing UI elements.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-video">[🔗 Explainer Video Example]</div>
+                        <div class="project-info">
+                            <h4>Style B: High-Converting Explainer Videos</h4>
+                            <p><strong>Why it works:</strong> Story-driven editing visually maps out your customer's pain point and seamlessly transitions into your product as the ultimate solution.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-video">[🔗 Documentary Edit Example]</div>
+                        <div class="project-info">
+                            <h4>Style C: Documentary-Style YouTube Edits</h4>
+                            <p><strong>Why it works:</strong> Narrative-first cutting, dramatic pacing shifts, archival overlays, and emotive scoring to keep viewers invested for 10 to 40+ minutes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToFadeIn = document.querySelectorAll('.fade-in');
+            elementsToFadeIn.forEach(el => observer.observe(el));
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
